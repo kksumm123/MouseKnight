@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 984966725}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.63, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 6835655428225196306}
   m_RootOrder: 1
@@ -157,17 +157,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 1.634021
-      value: 1.9537127
-      inSlope: -0.36005968
-      outSlope: -0.36005968
+      time: 0.59307414
+      value: 1.0227245
+      inSlope: 0.15222321
+      outSlope: 0.15222321
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.4437952
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 2.004593
-      value: -0.0060272217
+      time: 1.0056305
+      value: 0.0033416748
       inSlope: -5.7214594
       outSlope: -5.7214594
       tangentMode: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpYMult: 1
+  jumpYMult: 10
 --- !u!195 &4305398161651098806
 NavMeshAgent:
   m_ObjectHideFlags: 0

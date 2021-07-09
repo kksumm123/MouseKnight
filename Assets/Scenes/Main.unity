@@ -225,7 +225,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &497023980
 MeshCollider:
@@ -1068,10 +1068,6 @@ PrefabInstance:
     - target: {fileID: 991591011913949861, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1145833566799531403, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
-      propertyPath: jumpYMult
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6835655428225196306, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
       propertyPath: m_RootOrder
