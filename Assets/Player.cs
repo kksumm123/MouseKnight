@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float speed = 60;
     [SerializeField] float moveAbleDistance = 12;
+    Transform spriteTr;
     Transform moustPointer;
     Animator animator;
     enum JumpStateType
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        spriteTr = GetComponentInChildren<SpriteRenderer>().transform;
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         State = StateType.Idle;
@@ -83,7 +85,6 @@ public class Player : MonoBehaviour
         JumpState = JumpStateType.Ground;
         State = StateType.Idle;
     }
-
     private void Move()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -97,7 +98,17 @@ public class Player : MonoBehaviour
             {
                 var dir = hitPoint - transform.position;
                 dir.Normalize();
-                transform.Translate(dir * speed * Time.deltaTime);
+                transform.Translate(dir * speed * Time.deltaTime, Space.World);
+
+                bool isRightSide = dir.x > 0;
+                if (isRightSide)
+                {
+                    transform.rotation = Quaternion.Euler(Vector3.zero);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(270, 180, 0);
+                }
                 State = StateType.Walk;
             }
             else
@@ -105,5 +116,6 @@ public class Player : MonoBehaviour
                 State = StateType.Idle;
             }
         }
+        Debug.Log(transform.rotation);
     }
 }
