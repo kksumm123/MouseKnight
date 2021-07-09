@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ced3c77920d19a4d8c8752acaa751d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 60
   moveAbleDistance: 12
   jumpYac:
     serializedVersion: 2
@@ -171,22 +171,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.59307414
-      value: 1.0227245
-      inSlope: 0.15222321
-      outSlope: 0.15222321
+      time: 0.45942897
+      value: 0.9961634
+      inSlope: -0.079026125
+      outSlope: -0.079026125
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.13932171
     - serializedVersion: 3
       time: 1.0056305
       value: 0.0033416748
-      inSlope: -5.7214594
-      outSlope: -5.7214594
+      inSlope: -1.8230546
+      outSlope: -1.8230546
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.08406689
+      inWeight: 0.08312906
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

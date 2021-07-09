@@ -5,12 +5,43 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 30;
+    [SerializeField] float speed = 60;
     [SerializeField] float moveAbleDistance = 12;
     Transform moustPointer;
+    Animator animator;
+    enum JumpStateType
+    {
+        Ground,
+        Jump,
+    }
+    JumpStateType jumpState;
+    JumpStateType JumpState { get => jumpState; set => jumpState = value; }
+
+    enum StateType
+    {
+        Idle,
+        Walk,
+        Jump,
+        Attakc,
+    }
+    StateType state;
+    StateType State
+    {
+        get => state;
+        set
+        {
+            if (state == value)
+                return;
+            state = value;
+            animator.Play(State.ToString());
+        }
+    }
+
     void Start()
     {
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
+        animator = GetComponentInChildren<Animator>();
+        State = StateType.Idle;
     }
     Plane plain = new Plane(new Vector3(0, 1, 0), 0);
     void Update()
@@ -19,13 +50,6 @@ public class Player : MonoBehaviour
         Jump();
     }
 
-    enum JumpStateType
-    { 
-        Ground,
-        Jump,
-    }
-    JumpStateType jumpState;
-    private JumpStateType JumpState { get => jumpState; set => jumpState = value; }
     public AnimationCurve jumpYac;
     void Jump()
     {
@@ -42,6 +66,7 @@ public class Player : MonoBehaviour
     private IEnumerator JumpCo()
     {
         JumpState = JumpStateType.Jump;
+        State = StateType.Jump;
         float jumpStartTime = Time.time;
         float jumpDuration = jumpYac[jumpYac.length - 1].time;
         jumpDuration *= jumpTimeMult;
@@ -56,6 +81,7 @@ public class Player : MonoBehaviour
             sumEvaluateTime += Time.deltaTime;
         }
         JumpState = JumpStateType.Ground;
+        State = StateType.Idle;
     }
 
     private void Move()
@@ -72,6 +98,11 @@ public class Player : MonoBehaviour
                 var dir = hitPoint - transform.position;
                 dir.Normalize();
                 transform.Translate(dir * speed * Time.deltaTime);
+                State = StateType.Walk;
+            }
+            else
+            {
+                State = StateType.Idle;
             }
         }
     }
