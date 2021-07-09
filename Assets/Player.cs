@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float speed = 5;
+    [SerializeField] float moveAbleDistance = 3;
+    Transform moustPointer;
     void Start()
     {
-        
+        moustPointer = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            moustPointer.position = hit.point;
+            float distnace = Vector3.Distance(hit.point, transform.position);
+            if (distnace > moveAbleDistance)
+            {
+                var dir = hit.point - transform.position;
+                dir.Normalize();
+                transform.Translate(dir * speed * Time.deltaTime);
+            }
+        }
     }
 }
