@@ -38,11 +38,13 @@ public class Player : MonoBehaviour
     }
 
     [SerializeField] float jumpYMult = 1;
+    [SerializeField] float jumpTimeMult = 1;
     private IEnumerator JumpCo()
     {
         JumpState = JumpStateType.Jump;
         float jumpStartTime = Time.time;
         float jumpDuration = jumpYac[jumpYac.length - 1].time;
+        jumpDuration *= jumpTimeMult;
         float jumpEndTime = jumpStartTime + jumpDuration;
         float sumEvaluateTime = 0;
         while (Time.time < jumpEndTime)

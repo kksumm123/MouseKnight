@@ -12,7 +12,7 @@ public class FollowTarget : MonoBehaviour
         originY = transform.position.y;
     }
 
-    void Update()
+    void LateUpdate()
     {
         var newPos = transform.position;
         newPos.y = originY;
