@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 5;
-    [SerializeField] float moveAbleDistance = 3;
+    [SerializeField] float speed = 30;
+    [SerializeField] float moveAbleDistance = 12;
     Transform moustPointer;
     void Start()
     {
-        moustPointer = GetComponent<Transform>();
+        moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
     }
     Plane plain = new Plane(new Vector3(0, 1, 0), 0);
     void Update()
@@ -19,9 +19,18 @@ public class Player : MonoBehaviour
         Jump();
     }
 
+    enum JumpStateType
+    { 
+        Ground,
+        Jump,
+    }
+    JumpStateType jumpState;
+    private JumpStateType JumpState { get => jumpState; set => jumpState = value; }
     public AnimationCurve jumpYac;
     void Jump()
     {
+        if (JumpState == JumpStateType.Jump)
+            return;
         if (Input.GetMouseButtonDown(0))
         {
             StartCoroutine(JumpCo());
@@ -31,7 +40,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpYMult = 1;
     private IEnumerator JumpCo()
     {
-        yield return null;
+        JumpState = JumpStateType.Jump;
         float jumpStartTime = Time.time;
         float jumpDuration = jumpYac[jumpYac.length - 1].time;
         float jumpEndTime = jumpStartTime + jumpDuration;
@@ -44,6 +53,7 @@ public class Player : MonoBehaviour
             yield return null;
             sumEvaluateTime += Time.deltaTime;
         }
+        JumpState = JumpStateType.Ground;
     }
 
     private void Move()
