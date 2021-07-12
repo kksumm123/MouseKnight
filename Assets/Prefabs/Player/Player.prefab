@@ -157,7 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  moveAbleDistance: 12
+  stopDistance: 7
+  walkDistance: 12
   jumpYac:
     serializedVersion: 2
     m_Curve:
@@ -193,6 +194,13 @@ MonoBehaviour:
     m_RotationOrder: 4
   jumpYMult: 20
   jumpTimeMult: 1
+  dashableDistance: 10
+  dashableTime: 0.4
+  mouseDownTime: 0
+  mouseDownPosition: {x: 0, y: 0, z: 0}
+  dashTime: 0.3
+  dashSpeedMult: 4
+  dashDirection: {x: 0, y: 0, z: 0}
 --- !u!195 &4305398161651098806
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -226,6 +234,7 @@ GameObject:
   - component: {fileID: 8926721895426277134}
   - component: {fileID: 8926721895426277133}
   - component: {fileID: 8926721895426277132}
+  - component: {fileID: 8907357102871239045}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -317,3 +326,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8907357102871239045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926721895426277123}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a957e37da95464baa8067fc6756f4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScale: {x: 1, y: 1}
+  _endScale: {x: 1, y: 1}
+  _trailLifetime: 0.2
+  _spawnType: 1
+  _timeBetweenTrailSpawn: 0.5
+  _distanceBetweenTrailSpawn: 3
+  _alphaUpdateOn: 1
+  _maxAlpha: 0.5
+  _minAlpha: 0
+  _useSolidColors: 0
+  _rainbowMode: 0
+  _userSelectedColorPalette: []

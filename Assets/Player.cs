@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     Transform spriteTr;
     Transform moustPointer;
     Animator animator;
+    SpriteTrailRenderer.SpriteTrailRenderer spriteTrailRenderer;
     enum JumpStateType
     {
         Ground,
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         spriteTr = GetComponentInChildren<SpriteRenderer>().transform;
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
+        spriteTrailRenderer = GetComponentInChildren<SpriteTrailRenderer.SpriteTrailRenderer>();
         State = StateType.Idle;
     }
     void Update()
@@ -189,6 +191,7 @@ public class Player : MonoBehaviour
     private IEnumerator DashCo()
     {
         // dash는 방향을 바꿀 수 없다
+        spriteTrailRenderer.enabled = true;
         dashDirection = Input.mousePosition - mouseDownPosition;
         dashDirection.y = 0;
         dashDirection.z = 0;
@@ -198,6 +201,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(dashTime);
         speed = originSpeed;
         State = StateType.Idle;
+        spriteTrailRenderer.enabled = false;
     }
 
     bool IsSuccesDashDrag()
