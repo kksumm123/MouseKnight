@@ -226,7 +226,6 @@ GameObject:
   - component: {fileID: 8926721895426277134}
   - component: {fileID: 8926721895426277133}
   - component: {fileID: 8926721895426277132}
-  - component: {fileID: 1297601365}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -318,25 +317,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!195 &1297601365
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926721895426277123}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 26.666666
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 37
-  m_BaseOffset: 18.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4

@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
         JumpState = JumpStateType.Ground;
         State = StateType.Idle;
     }
+    Vector3 dir;
+
     private void Move()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -96,19 +98,21 @@ public class Player : MonoBehaviour
             float distnace = Vector3.Distance(hitPoint, transform.position);
             if (distnace > moveAbleDistance)
             {
-                var dir = hitPoint - transform.position;
+                dir = hitPoint - transform.position;
                 dir.Normalize();
                 transform.Translate(dir * speed * Time.deltaTime, Space.World);
-
                 bool isRightSide = dir.x > 0;
                 if (isRightSide)
                 {
                     transform.rotation = Quaternion.Euler(Vector3.zero);
+                    spriteTr.rotation = Quaternion.Euler(new Vector3(45, 0, 0));
                 }
                 else
                 {
-                    transform.rotation = Quaternion.Euler(270, 180, 0);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
                 }
+
                 State = StateType.Walk;
             }
             else
@@ -116,6 +120,5 @@ public class Player : MonoBehaviour
                 State = StateType.Idle;
             }
         }
-        Debug.Log(transform.rotation);
     }
 }
