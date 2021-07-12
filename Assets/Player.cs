@@ -7,7 +7,8 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float speed = 60;
-    [SerializeField] float moveAbleDistance = 12;
+    [SerializeField] float stopDistance = 7;
+    [SerializeField] float walkDistance = 12;
     Transform spriteTr;
     Transform moustPointer;
     Animator animator;
@@ -47,13 +48,59 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         State = StateType.Idle;
     }
-    Plane plain = new Plane(new Vector3(0, 1, 0), 0);
     void Update()
     {
         Move();
         Jump();
+        Dash();
     }
 
+    #region Move
+    Plane plain = new Plane(new Vector3(0, 1, 0), 0);
+    private void Move()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float enter = 0.0f;
+
+        float movealbeDistance = stopDistance;
+        // State가 Walk 일땐 7(stopDistance)사용.
+        // Idle에서 Walk로 갈땐 12(WalkDistance)사용
+        if (State == StateType.Idle)
+            movealbeDistance = walkDistance;
+
+        if (plain.Raycast(ray, out enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+            moustPointer.position = hitPoint;
+            float distnace = Vector3.Distance(hitPoint, transform.position);
+            if (distnace > movealbeDistance)
+            {
+                dir = hitPoint - transform.position;
+                dir.Normalize();
+                transform.Translate(dir * speed * Time.deltaTime, Space.World);
+                bool isRightSide = dir.x > 0;
+                if (isRightSide)
+                {
+                    transform.rotation = Quaternion.Euler(Vector3.zero);
+                    spriteTr.rotation = Quaternion.Euler(new Vector3(45, 0, 0));
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
+                }
+                if (JumpState != JumpStateType.Jump)
+                    State = StateType.Walk;
+            }
+            else
+            {
+                if (JumpState != JumpStateType.Jump)
+                    State = StateType.Idle;
+            }
+        }
+    }
+    #endregion Move
+    #region Jump
     public AnimationCurve jumpYac;
     void Jump()
     {
@@ -92,40 +139,44 @@ public class Player : MonoBehaviour
         State = StateType.Idle;
     }
     Vector3 dir;
-
-    private void Move()
+    #endregion Jump
+    #region Dash
+    [SerializeField] float dashableDistance = 10;
+    [SerializeField] float dashableTime = 0.4f;
+    [SerializeField] float mouseDownTime = 0;
+    [SerializeField] Vector3 mouseDownPosition;
+    bool dashInit = false;
+    void Dash()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float enter = 0.0f;
-        if (plain.Raycast(ray, out enter))
+        if (Input.GetMouseButtonDown(0))
         {
-            Vector3 hitPoint = ray.GetPoint(enter);
-            moustPointer.position = hitPoint;
-            float distnace = Vector3.Distance(hitPoint, transform.position);
-            if (distnace > moveAbleDistance)
+            mouseDownTime = Time.time;
+            mouseDownPosition = Input.mousePosition;
+            dashInit = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (Time.time - mouseDownTime <= dashableTime)
             {
-                dir = hitPoint - transform.position;
-                dir.Normalize();
-                transform.Translate(dir * speed * Time.deltaTime, Space.World);
-                bool isRightSide = dir.x > 0;
-                if (isRightSide)
+                var mousePos = Input.mousePosition;
+                float dragDistance = 
+                    Vector3.Distance(mouseDownPosition, mousePos);
+
+                if (dashInit && dragDistance > dashableDistance)
                 {
-                    transform.rotation = Quaternion.Euler(Vector3.zero);
-                    spriteTr.rotation = Quaternion.Euler(new Vector3(45, 0, 0));
+                    Vector3 dashDir = mousePos - mouseDownPosition;
+                    dashDir.Normalize();
+                    transform.Translate(dashDir * 20, Space.World);
+                    Debug.Log(dashDir);
                 }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
-                    spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
-                }
-                if (JumpState != JumpStateType.Jump)
-                    State = StateType.Walk;
             }
             else
-            {
-                if (JumpState != JumpStateType.Jump)
-                    State = StateType.Idle;
+            { 
+                mouseDownTime = 0;
+                mouseDownPosition = Vector3.zero;
+                dashInit = false;   
             }
         }
     }
+    #endregion Dash
 }
