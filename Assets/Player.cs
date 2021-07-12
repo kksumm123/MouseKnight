@@ -162,27 +162,35 @@ public class Player : MonoBehaviour
     Vector3 dir;
     #endregion Jump
     #region Dash
+    [SerializeField] float dashCoolTime = 2;
+    [SerializeField] bool isDash = true;
     [SerializeField] float dashableDistance = 10;
     [SerializeField] float dashableTime = 0.4f;
     [SerializeField] float mouseDownTime = 0;
     [SerializeField] Vector3 mouseDownPosition;
-    bool dashInit = false;
     void Dash()
     {
         if (Input.GetMouseButtonDown(0))
         {
             mouseDownTime = Time.time;
             mouseDownPosition = Input.mousePosition;
-            dashInit = true;
         }
         if (Input.GetMouseButtonUp(0))
         {
             bool isDashDrag = IsSuccesDashDrag();
             if (isDashDrag)
             {
+                StartCoroutine(DashCoolTimeCo());
                 StartCoroutine(DashCo());
             }
         }
+    }
+
+    private IEnumerator DashCoolTimeCo()
+    {
+        isDash = false;
+        yield return new WaitForSeconds(dashCoolTime);
+        isDash = true;
     }
 
     [SerializeField] float dashTime = 0.3f;
@@ -213,6 +221,9 @@ public class Player : MonoBehaviour
 
         float dragDistance = Vector3.Distance(mouseDownPosition, Input.mousePosition);
         if (dragDistance < dashableDistance)
+            return false;
+
+        if (isDash == false)
             return false;
 
         return true;
