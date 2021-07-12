@@ -163,7 +163,7 @@ public class Player : MonoBehaviour
     #endregion Jump
     #region Dash
     [SerializeField] float dashCoolTime = 2;
-    [SerializeField] bool isDash = true;
+    [SerializeField] float nextDashCoolTime;
     [SerializeField] float dashableDistance = 10;
     [SerializeField] float dashableTime = 0.4f;
     [SerializeField] float mouseDownTime = 0;
@@ -180,17 +180,10 @@ public class Player : MonoBehaviour
             bool isDashDrag = IsSuccesDashDrag();
             if (isDashDrag)
             {
-                StartCoroutine(DashCoolTimeCo());
+                nextDashCoolTime = Time.time;
                 StartCoroutine(DashCo());
             }
         }
-    }
-
-    private IEnumerator DashCoolTimeCo()
-    {
-        isDash = false;
-        yield return new WaitForSeconds(dashCoolTime);
-        isDash = true;
     }
 
     [SerializeField] float dashTime = 0.3f;
@@ -223,7 +216,10 @@ public class Player : MonoBehaviour
         if (dragDistance < dashableDistance)
             return false;
 
-        if (isDash == false)
+        if (State == StateType.Dash)
+            return false;
+
+        if (Time.time - nextDashCoolTime > dashCoolTime)
             return false;
 
         return true;
