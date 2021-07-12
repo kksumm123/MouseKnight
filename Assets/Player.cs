@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
     {
         Idle,
         Walk,
-        Jump,
+        JumpUp,
+        JumpDown,
         Attakc,
     }
     StateType state;
@@ -69,18 +70,22 @@ public class Player : MonoBehaviour
     private IEnumerator JumpCo()
     {
         JumpState = JumpStateType.Jump;
-        State = StateType.Jump;
+        State = StateType.JumpUp;
         float jumpStartTime = Time.time;
         float jumpDuration = jumpYac[jumpYac.length - 1].time;
         jumpDuration *= jumpTimeMult;
         float jumpEndTime = jumpStartTime + jumpDuration;
         float sumEvaluateTime = 0;
+        float preY = 0;
         while (Time.time < jumpEndTime)
         {
             float y = jumpYac.Evaluate(sumEvaluateTime);
             y *= jumpYMult;
             transform.Translate(0, y, 0);
             yield return null;
+            if (preY > y)
+                State = StateType.JumpDown;
+            preY = y;
             sumEvaluateTime += Time.deltaTime;
         }
         JumpState = JumpStateType.Ground;
