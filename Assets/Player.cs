@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     [SerializeField] float speed = 60;
     [SerializeField] float moveAbleDistance = 12;
     Transform spriteTr;
@@ -112,12 +113,13 @@ public class Player : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                     spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
                 }
-
-                State = StateType.Walk;
+                if (JumpState != JumpStateType.Jump)
+                    State = StateType.Walk;
             }
             else
             {
-                State = StateType.Idle;
+                if (JumpState != JumpStateType.Jump)
+                    State = StateType.Idle;
             }
         }
     }
