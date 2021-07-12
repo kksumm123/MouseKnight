@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField] float speed = 60;
+    float originSpeed;
     [SerializeField] float stopDistance = 7;
     [SerializeField] float walkDistance = 12;
     Transform spriteTr;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
         JumpUp,
         JumpDown,
         Attakc,
+        Dash,
     }
     StateType state;
     StateType State
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        originSpeed = speed;
         spriteTr = GetComponentInChildren<SpriteRenderer>().transform;
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
@@ -77,6 +80,10 @@ public class Player : MonoBehaviour
             {
                 dir = hitPoint - transform.position;
                 dir.Normalize();
+
+                if (State == StateType.Dash)
+                    dir = dashDirection;
+
                 transform.Translate(dir * speed * Time.deltaTime, Space.World);
                 bool isRightSide = dir.x > 0;
                 if (isRightSide)
@@ -89,14 +96,26 @@ public class Player : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 180, 0);
                     spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
                 }
-                if (JumpState != JumpStateType.Jump)
+
+                if (ChangeableWalkOrIdleState())
                     State = StateType.Walk;
             }
             else
             {
-                if (JumpState != JumpStateType.Jump)
+                if (ChangeableWalkOrIdleState())
                     State = StateType.Idle;
             }
+
+        }
+        bool ChangeableWalkOrIdleState()
+        {
+            if (jumpState == JumpStateType.Jump)
+                return false;
+
+            if (State == StateType.Dash)
+                return false;
+
+            return true;
         }
     }
     #endregion Move
@@ -156,27 +175,43 @@ public class Player : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            if (Time.time - mouseDownTime <= dashableTime)
+            bool isDashDrag = IsSuccesDashDrag();
+            if (isDashDrag)
             {
-                var mousePos = Input.mousePosition;
-                float dragDistance = 
-                    Vector3.Distance(mouseDownPosition, mousePos);
-
-                if (dashInit && dragDistance > dashableDistance)
-                {
-                    Vector3 dashDir = mousePos - mouseDownPosition;
-                    dashDir.Normalize();
-                    transform.Translate(dashDir * 20, Space.World);
-                    Debug.Log(dashDir);
-                }
-            }
-            else
-            { 
-                mouseDownTime = 0;
-                mouseDownPosition = Vector3.zero;
-                dashInit = false;   
+                StartCoroutine(DashCo());
             }
         }
+    }
+
+    [SerializeField] float dashTime = 0.3f;
+    [SerializeField] float dashSpeedMult = 4f;
+    [SerializeField] Vector3 dashDirection;
+    private IEnumerator DashCo()
+    {
+        // dash는 방향을 바꿀 수 없다
+        dashDirection = Input.mousePosition - mouseDownPosition;
+        dashDirection.y = 0;
+        dashDirection.z = 0;
+        dashDirection.Normalize();
+        speed = originSpeed * dashSpeedMult;
+        State = StateType.Dash;
+        yield return new WaitForSeconds(dashTime);
+        speed = originSpeed;
+        State = StateType.Idle;
+    }
+
+    bool IsSuccesDashDrag()
+    {
+        // 시간, 거리 체크해야함
+        float dragTime = Time.time - mouseDownTime;
+        if (dragTime > dashableTime)
+            return false;
+
+        float dragDistance = Vector3.Distance(mouseDownPosition, Input.mousePosition);
+        if (dragDistance < dashableDistance)
+            return false;
+
+        return true;
     }
     #endregion Dash
 }
