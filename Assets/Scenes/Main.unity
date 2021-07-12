@@ -219,6 +219,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &631659584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 984966726, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
+  m_PrefabInstance: {fileID: 8926721896395892900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062954284
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9eb875a27f89334d928f35d9979cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8926721896395892901}
+  target: {fileID: 631659584}
   offset: {x: 0, y: 50, z: 0}
   moveableArea: {fileID: 1349996312}
   minX: 0
@@ -900,8 +905,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
---- !u!4 &8926721896395892901 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6835655428225196306, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
-  m_PrefabInstance: {fileID: 8926721896395892900}
-  m_PrefabAsset: {fileID: 0}
