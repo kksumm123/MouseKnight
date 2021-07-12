@@ -162,12 +162,13 @@ public class Player : MonoBehaviour
     Vector3 dir;
     #endregion Jump
     #region Dash
+    [Header("대쉬----------")]
     [SerializeField] float dashCoolTime = 2;
-    [SerializeField] float nextDashCoolTime;
+    float nextDashCoolTime;
     [SerializeField] float dashableDistance = 10;
     [SerializeField] float dashableTime = 0.4f;
-    [SerializeField] float mouseDownTime = 0;
-    [SerializeField] Vector3 mouseDownPosition;
+    float mouseDownTime = 0;
+    Vector3 mouseDownPosition;
     void Dash()
     {
         if (Input.GetMouseButtonDown(0))
@@ -188,7 +189,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] float dashTime = 0.3f;
     [SerializeField] float dashSpeedMult = 4f;
-    [SerializeField] Vector3 dashDirection;
+    Vector3 dashDirection;
     private IEnumerator DashCo()
     {
         // dash는 방향을 바꿀 수 없다
