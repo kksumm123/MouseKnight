@@ -273,19 +273,13 @@ public class Player : MonoBehaviour
     #region Methods
     public void TakeHit(int damage)
     {
+        if (State == StateType.Death)
+            return;
+
         hp -= damage;
         // ÇÇ°Ý ¸ð¼Ç
 
-        // hp < 0 Á×ÀÚ
-        if (hp > 0)
-        {
-            StartCoroutine(TakeHitCo());
-        }
-        else
-        {
-            StartCoroutine(DeathCo());
-            State = StateType.Death;
-        }
+        StartCoroutine(TakeHitCo());
     }
 
     [SerializeField] float takeHitTime = 0.3f;
@@ -293,7 +287,12 @@ public class Player : MonoBehaviour
     {
         State = StateType.TakeHit;
         yield return new WaitForSeconds(takeHitTime);
-        State = StateType.Idle;
+
+        // hp < 0 Á×ÀÚ
+        if (hp > 0)
+            State = StateType.Idle;
+        else
+            StartCoroutine(DeathCo());
     }
     [SerializeField] float deathTime = 1f;
     private IEnumerator DeathCo()
