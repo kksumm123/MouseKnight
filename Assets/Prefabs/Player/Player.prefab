@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 984966726}
   - component: {fileID: 984966729}
   - component: {fileID: 984966728}
-  - component: {fileID: 984966727}
   - component: {fileID: 2696430513147541700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,20 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &984966727
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984966725}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &2696430513147541700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +106,8 @@ GameObject:
   - component: {fileID: 6835655428225196306}
   - component: {fileID: 1145833566799531403}
   - component: {fileID: 4305398161651098806}
-  m_Layer: 0
+  - component: {fileID: 772599494}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ced3c77920d19a4d8c8752acaa751d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
+  power: 20
   speed: 60
   stopDistance: 7
   walkDistance: 12
@@ -190,6 +178,14 @@ MonoBehaviour:
   dashableTime: 0.4
   dashTime: 0.3
   dashSpeedMult: 4
+  attackTime: 0.5
+  attackApplyTime: 0.2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackCollider: {fileID: 0}
+  takeHitTime: 0.3
+  deathTime: 1
 --- !u!195 &4305398161651098806
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -202,7 +198,7 @@ NavMeshAgent:
   m_Radius: 3.19
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 99
+  avoidancePriority: 10
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -212,6 +208,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &772599494
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991591011913949861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 9
+  m_Center: {x: 11, y: 10, z: 0}
 --- !u!1 &8926721895426277123
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +233,7 @@ GameObject:
   - component: {fileID: 8926721895426277133}
   - component: {fileID: 8926721895426277132}
   - component: {fileID: 8907357102871239045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

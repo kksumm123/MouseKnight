@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         spriteTrailRenderer = GetComponentInChildren<SpriteTrailRenderer.SpriteTrailRenderer>();
         agent = GetComponent<NavMeshAgent>();
+        enemyLayer = 1 << LayerMask.NameToLayer("Monster");
+        attackCollider = GetComponent<SphereCollider>();
         State = StateType.Idle;
     }
     void Update()
@@ -249,11 +251,23 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             StartCoroutine(AttackCo());
     }
-    [SerializeField] float attackTime = 1f;
+    [SerializeField] float attackTime = 0.5f;
+    [SerializeField] float attackApplyTime = 0.2f;
+    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] SphereCollider attackCollider;
     private IEnumerator AttackCo()
     {
         State = StateType.Attack;
-        yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackApplyTime);
+
+        //실제 어택하는 부분
+        var enemyColliders = Physics.OverlapSphere(attackCollider.transform.position, attackCollider.radius, enemyLayer);
+        foreach (var item in enemyColliders)
+        {
+            item.GetComponent<Goblin>().TakeHit(power);
+        }
+
+        yield return new WaitForSeconds(attackTime - attackApplyTime);
         State = StateType.Idle;
     }
     #endregion Attack

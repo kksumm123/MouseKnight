@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1710450541}
   - component: {fileID: 1710450545}
   - component: {fileID: 1710450544}
-  - component: {fileID: 1710450543}
   - component: {fileID: 1710450542}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,20 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1710450543
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710450540}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1710450542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +106,8 @@ GameObject:
   - component: {fileID: 1267535670747248281}
   - component: {fileID: 1787467888}
   - component: {fileID: 8296028115448904628}
-  m_Layer: 0
+  - component: {fileID: 5740942374937791770}
+  m_Layer: 7
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,8 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6485f2bb494cdc140ab9f1067306ff71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 50
+  power: 10
   speed: 40
   detectRange: 40
+  attackRange: 10
+  attackTime: 1
+  attackApplyTime: 0.2
+  TakeHitTime: 0.3
 --- !u!195 &8296028115448904628
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -180,6 +172,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &5740942374937791770
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121638663246977088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.23
+  m_Height: 12.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &6464486921691044452
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +197,7 @@ GameObject:
   - component: {fileID: 6464486921691044451}
   - component: {fileID: 6464486921691044450}
   - component: {fileID: 6464486921691044453}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
