@@ -29,7 +29,6 @@ public class Goblin : MonoBehaviour
     }
 
     [SerializeField] float detectRange = 40;
-
     private IEnumerator IdleCo()
     {
         //IdleCo
