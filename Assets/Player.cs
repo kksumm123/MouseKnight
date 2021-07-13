@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -42,13 +43,14 @@ public class Player : MonoBehaviour
             animator.Play(State.ToString());
         }
     }
-
+    NavMeshAgent agent;
     void Start()
     {
         originSpeed = speed;
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         spriteTrailRenderer = GetComponentInChildren<SpriteTrailRenderer.SpriteTrailRenderer>();
+        agent = GetComponent<NavMeshAgent>();
         State = StateType.Idle;
     }
     void Update()
@@ -137,17 +139,21 @@ public class Player : MonoBehaviour
         float jumpEndTime = jumpStartTime + jumpDuration;
         float sumEvaluateTime = 0;
         float preY = 0;
+        agent.enabled = false;
         while (Time.time < jumpEndTime)
-        {
+        { 
             float y = jumpYac.Evaluate(sumEvaluateTime);
             y *= jumpYMult;
             transform.Translate(0, y, 0);
             yield return null;
-            if (preY > y)
+            if (preY > transform.position.y)
                 State = StateType.JumpDown;
-            preY = y;
+            preY = transform.position.y;
+            if (preY < 0) 
+                break;
             sumEvaluateTime += Time.deltaTime;
         }
+        agent.enabled = true;
         JumpState = JumpStateType.Ground;
         State = StateType.Idle;
     }

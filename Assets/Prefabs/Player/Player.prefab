@@ -163,44 +163,33 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      time: 0.0033302307
+      value: 0.49866104
+      inSlope: -0.9957871
+      outSlope: -0.9957871
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.45942897
-      value: 0.9961634
-      inSlope: -0.079026125
-      outSlope: -0.079026125
-      tangentMode: 0
+      time: 1.0065918
+      value: -0.50037384
+      inSlope: -0.9957871
+      outSlope: -0.9957871
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.13932171
-    - serializedVersion: 3
-      time: 1.0056305
-      value: 0.0033416748
-      inSlope: -1.8230546
-      outSlope: -1.8230546
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.08312906
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpYMult: 20
+  jumpYMult: 1
   jumpTimeMult: 1
+  dashCoolTime: 2
   dashableDistance: 10
   dashableTime: 0.4
-  mouseDownTime: 0
-  mouseDownPosition: {x: 0, y: 0, z: 0}
   dashTime: 0.3
   dashSpeedMult: 4
-  dashDirection: {x: 0, y: 0, z: 0}
 --- !u!195 &4305398161651098806
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -249,13 +238,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926721895426277123}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.414, z: 1}
   m_Children: []
   m_Father: {fileID: 6835655428225196306}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8926721895426277133
 SpriteRenderer:
   m_ObjectHideFlags: 0
