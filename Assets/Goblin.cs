@@ -9,7 +9,7 @@ public class Goblin : MonoBehaviour
     Player player;
     Animator animator;
 
-    [SerializeField] float speed = 4;
+    [SerializeField] float speed = 40;
 
     bool isLive = false;
     bool isChase = false;
@@ -18,7 +18,7 @@ public class Goblin : MonoBehaviour
         player = Player.instance;
         animator = GetComponentInChildren<Animator>();
         yield return null;
-        
+
         isLive = true;
         currentFSM = IdleCo;
 
@@ -52,10 +52,13 @@ public class Goblin : MonoBehaviour
 
     IEnumerator ChaseCo()
     {
+        animator.Play("Run");
+
         while (isChase)
         {
             Vector3 toPlayerDirection = player.transform.position - transform.position;
             toPlayerDirection.Normalize();
+            transform.rotation = Quaternion.Euler(0, toPlayerDirection.x < 0 ? 0 : 180, 0);
             transform.Translate(toPlayerDirection * speed * Time.deltaTime, Space.World);
             yield return null;
         }
