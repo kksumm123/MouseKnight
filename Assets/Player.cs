@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     {
         instance = this;
     }
+    [SerializeField] int hp = 100;
+    [SerializeField] int power = 20;
     [SerializeField] float speed = 60;
     float originSpeed;
     [SerializeField] float stopDistance = 7;
@@ -34,6 +36,8 @@ public class Player : MonoBehaviour
         JumpDown,
         Attack,
         Dash,
+        TakeHit,
+        Death,
     }
     StateType state;
     StateType State
@@ -60,7 +64,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (State != StateType.Attack)
+        if (IsMovable())
         {
             Move();
             Jump();
@@ -68,6 +72,20 @@ public class Player : MonoBehaviour
         bool isSucceedDash = Dash();
         if (isSucceedDash == false)
             Attack();
+    }
+
+    bool IsMovable()
+    {
+        switch (State)
+        {
+            case StateType.Attack:
+            case StateType.Dash:
+            case StateType.TakeHit:
+            case StateType.Death:
+                return false;
+        }
+
+        return true;
     }
 
     #region Move
@@ -124,6 +142,7 @@ public class Player : MonoBehaviour
             return true;
         }
     }
+
     #endregion Move
     #region Jump
     public AnimationCurve jumpYac;
@@ -251,4 +270,21 @@ public class Player : MonoBehaviour
         State = StateType.Idle;
     }
     #endregion Attack
+    #region Methods
+    public void TakeHit(int damage)
+    {
+        hp -= damage;
+        // 피격 모션
+
+        // hp < 0 죽자
+        if (hp > 0)
+        {
+            State = StateType.TakeHit;
+        }
+        else
+        {
+            State = StateType.Death;
+        }
+    }
+    #endregion Methods
 }

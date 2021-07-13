@@ -9,6 +9,7 @@ public class Goblin : MonoBehaviour
     Player player;
     Animator animator;
 
+    [SerializeField] int power = 10;
     [SerializeField] float speed = 40;
 
     bool isLive = false;
@@ -72,11 +73,20 @@ public class Goblin : MonoBehaviour
     }
 
     [SerializeField] float attackRange = 10f;
-    [SerializeField] float attackDelay = 1f;
+    [SerializeField] float attackTime = 1f;
+    [SerializeField] float attackApplyTime = 0.2f;
     IEnumerator AttackCo()
     {
         animator.Play("Attack");
-        yield return new WaitForSeconds(attackDelay);
+        yield return new WaitForSeconds(attackApplyTime);
+        
+        //실제 어택
+        if(Vector3.Distance(player.transform.position, transform.position) < attackRange)
+        {//플레이어 때리자
+            player.TakeHit(power);
+        }
+
+        yield return new WaitForSeconds(attackTime - attackApplyTime);
         currentFSM = ChaseCo;
     }
 
