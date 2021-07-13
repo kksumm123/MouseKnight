@@ -24,8 +24,7 @@ public class Goblin : MonoBehaviour
 
         while (isLive)
         { //상태를 무한히 반복해서 실행하는 부분
-            StartCoroutine(currentFSM());
-            yield return null;
+            yield return StartCoroutine(currentFSM());
         }
     }
 
