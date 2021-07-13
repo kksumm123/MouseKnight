@@ -279,12 +279,28 @@ public class Player : MonoBehaviour
         // hp < 0 Á×ÀÚ
         if (hp > 0)
         {
-            State = StateType.TakeHit;
+            StartCoroutine(TakeHitCo());
         }
         else
         {
+            StartCoroutine(DeathCo());
             State = StateType.Death;
         }
+    }
+
+    [SerializeField] float takeHitTime = 0.3f;
+    private IEnumerator TakeHitCo()
+    {
+        State = StateType.TakeHit;
+        yield return new WaitForSeconds(takeHitTime);
+        State = StateType.Idle;
+    }
+    [SerializeField] float deathTime = 1f;
+    private IEnumerator DeathCo()
+    {
+        State = StateType.Death;
+        yield return new WaitForSeconds(deathTime);
+        Debug.LogWarning("±ú²¿´Ú");
     }
     #endregion Methods
 }
