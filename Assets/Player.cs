@@ -6,7 +6,11 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
-
+    public static Player instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     [SerializeField] float speed = 60;
     float originSpeed;
     [SerializeField] float stopDistance = 7;
