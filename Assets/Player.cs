@@ -96,11 +96,11 @@ public class Player : MonoBehaviour
             dir = hitPoint - transform.position;
             dir.Normalize();
 
-            if (distnace > movealbeDistance)
-            {
-                if (State == StateType.Dash)
-                    dir = dashDirection;
+            if (State == StateType.Dash)
+                dir = dashDirection;
 
+            if (distnace > movealbeDistance || State == StateType.Dash)
+            {
                 transform.Translate(dir * speed * Time.deltaTime, Space.World);
 
                 if (ChangeableWalkOrIdleState())
