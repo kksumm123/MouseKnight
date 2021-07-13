@@ -58,7 +58,7 @@ public class Goblin : MonoBehaviour
         {
             Vector3 toPlayerDirection = player.transform.position - transform.position;
             toPlayerDirection.Normalize();
-            transform.rotation = Quaternion.Euler(0, toPlayerDirection.x < 0 ? 0 : 180, 0);
+            transform.rotation = Quaternion.Euler(0, toPlayerDirection.x > 0 ? 0 : 180, 0);
             transform.Translate(toPlayerDirection * speed * Time.deltaTime, Space.World);
             yield return null;
         }
