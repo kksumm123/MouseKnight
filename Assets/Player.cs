@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         while (Time.time < jumpEndTime)
         { 
             float y = jumpYac.Evaluate(sumEvaluateTime);
-            y *= jumpYMult;
+            y *= jumpYMult * Time.fixedDeltaTime;
             transform.Translate(0, y, 0);
             yield return null;
             if (preY > transform.position.y)
