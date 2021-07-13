@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Goblin : MonoBehaviour
 {
+    Func<IEnumerator> currentFSM;
     Player player;
     Animator animator;
 
@@ -19,10 +20,11 @@ public class Goblin : MonoBehaviour
         yield return null;
         
         isLive = true;
+        currentFSM = IdleCo;
 
         while (isLive)
         { //상태를 무한히 반복해서 실행하는 부분
-            StartCoroutine(IdleCo());
+            StartCoroutine(currentFSM());
             yield return null;
         }
     }
@@ -46,6 +48,7 @@ public class Goblin : MonoBehaviour
 
         // 감지거리 안으로 들어옴
         isChase = true;
+        currentFSM = ChaseCo;
     }
 
     IEnumerator ChaseCo()
