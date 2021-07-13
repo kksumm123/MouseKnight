@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     float originSpeed;
     [SerializeField] float stopDistance = 7;
     [SerializeField] float walkDistance = 12;
-    Transform spriteTr;
     Transform moustPointer;
     Animator animator;
     SpriteTrailRenderer.SpriteTrailRenderer spriteTrailRenderer;
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         originSpeed = speed;
-        spriteTr = GetComponentInChildren<SpriteRenderer>().transform;
         moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         spriteTrailRenderer = GetComponentInChildren<SpriteTrailRenderer.SpriteTrailRenderer>();
@@ -89,15 +87,9 @@ public class Player : MonoBehaviour
                 transform.Translate(dir * speed * Time.deltaTime, Space.World);
                 bool isRightSide = dir.x > 0;
                 if (isRightSide)
-                {
                     transform.rotation = Quaternion.Euler(Vector3.zero);
-                    spriteTr.rotation = Quaternion.Euler(new Vector3(45, 0, 0));
-                }
                 else
-                {
                     transform.rotation = Quaternion.Euler(0, 180, 0);
-                    spriteTr.rotation = Quaternion.Euler(new Vector3(-45, 180, 0));
-                }
 
                 if (ChangeableWalkOrIdleState())
                     State = StateType.Walk;
