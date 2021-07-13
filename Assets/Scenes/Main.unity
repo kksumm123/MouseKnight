@@ -916,6 +916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4305398161651098806, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
+      propertyPath: avoidancePriority
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6835655428225196306, guid: 1721b488da80e764cb4c348f1edc2710, type: 3}
       propertyPath: m_RootOrder
       value: 6
