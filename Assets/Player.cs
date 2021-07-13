@@ -74,19 +74,6 @@ public class Player : MonoBehaviour
             Attack();
     }
 
-    bool IsMovable()
-    {
-        switch (State)
-        {
-            case StateType.Attack:
-            case StateType.Dash:
-            case StateType.TakeHit:
-            case StateType.Death:
-                return false;
-        }
-
-        return true;
-    }
 
     #region Move
     Plane plain = new Plane(new Vector3(0, 1, 0), 0);
@@ -271,6 +258,19 @@ public class Player : MonoBehaviour
     }
     #endregion Attack
     #region Methods
+    bool IsMovable()
+    {
+        switch (State)
+        {
+            case StateType.Attack:
+            case StateType.TakeHit:
+            case StateType.Death:
+                return false;
+        }
+
+        return true;
+    }
+
     public void TakeHit(int damage)
     {
         if (State == StateType.Death)
