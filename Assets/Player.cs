@@ -60,9 +60,12 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        Move();
-        Jump();
-        bool isSucceedDash =  Dash();
+        if (State != StateType.Attack)
+        {
+            Move();
+            Jump();
+        }
+        bool isSucceedDash = Dash();
         if (isSucceedDash == false)
             Attack();
     }
@@ -128,7 +131,7 @@ public class Player : MonoBehaviour
     {
         if (JumpState == JumpStateType.Jump)
             return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             StartCoroutine(JumpCo());
         }
