@@ -82,20 +82,15 @@ public class Player : MonoBehaviour
             Vector3 hitPoint = ray.GetPoint(enter);
             moustPointer.position = hitPoint;
             float distnace = Vector3.Distance(hitPoint, transform.position);
+            dir = hitPoint - transform.position;
+            dir.Normalize();
+
             if (distnace > movealbeDistance)
             {
-                dir = hitPoint - transform.position;
-                dir.Normalize();
-
                 if (State == StateType.Dash)
                     dir = dashDirection;
 
                 transform.Translate(dir * speed * Time.deltaTime, Space.World);
-                bool isRightSide = dir.x > 0;
-                if (isRightSide)
-                    transform.rotation = Quaternion.Euler(Vector3.zero);
-                else
-                    transform.rotation = Quaternion.Euler(0, 180, 0);
 
                 if (ChangeableWalkOrIdleState())
                     State = StateType.Walk;
@@ -106,6 +101,11 @@ public class Player : MonoBehaviour
                     State = StateType.Idle;
             }
 
+            bool isRightSide = dir.x > 0;
+            if (isRightSide)
+                transform.rotation = Quaternion.Euler(Vector3.zero);
+            else
+                transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         bool ChangeableWalkOrIdleState()
         {
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
         float preY = 0;
         agent.enabled = false;
         while (Time.time < jumpEndTime)
-        { 
+        {
             float y = jumpYac.Evaluate(sumEvaluateTime);
             y *= jumpYMult * Time.fixedDeltaTime;
             transform.Translate(0, y, 0);
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
             if (preY > transform.position.y)
                 State = StateType.JumpDown;
             preY = transform.position.y;
-            if (preY < 0) 
+            if (preY < 0)
                 break;
             sumEvaluateTime += Time.deltaTime;
         }
