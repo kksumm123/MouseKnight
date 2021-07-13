@@ -59,7 +59,32 @@ public class Goblin : MonoBehaviour
             toPlayerDirection.Normalize();
             transform.rotation = Quaternion.Euler(0, toPlayerDirection.x > 0 ? 0 : 180, 0);
             transform.Translate(toPlayerDirection * speed * Time.deltaTime, Space.World);
+            
+            if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            {
+                currentFSM = AttackCo;
+                yield break;
+            }
+
             yield return null;
         }
+
+    }
+
+    [SerializeField] float attackRange = 10f;
+    [SerializeField] float attackDelay = 1f;
+    IEnumerator AttackCo()
+    {
+        animator.Play("Attack");
+        yield return new WaitForSeconds(attackDelay);
+        currentFSM = ChaseCo;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, detectRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

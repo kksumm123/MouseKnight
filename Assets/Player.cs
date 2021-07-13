@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         Walk,
         JumpUp,
         JumpDown,
-        Attakc,
+        Attack,
         Dash,
     }
     StateType state;
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
         {
             if (state == value)
                 return;
+            Debug.Log($"{state} -> {value}");
             state = value;
             animator.Play(State.ToString());
         }
@@ -61,7 +62,9 @@ public class Player : MonoBehaviour
     {
         Move();
         Jump();
-        Dash();
+        bool isSucceedDash =  Dash();
+        if (isSucceedDash == false)
+            Attack();
     }
 
     #region Move
@@ -171,7 +174,7 @@ public class Player : MonoBehaviour
     [SerializeField] float dashableTime = 0.4f;
     float mouseDownTime = 0;
     Vector3 mouseDownPosition;
-    void Dash()
+    bool Dash()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -185,8 +188,11 @@ public class Player : MonoBehaviour
             {
                 nextDashCoolTime = Time.time;
                 StartCoroutine(DashCo());
+
+                return true;
             }
         }
+        return false;
     }
 
     [SerializeField] float dashTime = 0.3f;
@@ -228,4 +234,18 @@ public class Player : MonoBehaviour
         return true;
     }
     #endregion Dash
+    #region Attack
+    void Attack()
+    {
+        if (Input.GetMouseButtonUp(0))
+            StartCoroutine(AttackCo());
+    }
+    [SerializeField] float attackTime = 1f;
+    private IEnumerator AttackCo()
+    {
+        State = StateType.Attack;
+        yield return new WaitForSeconds(attackTime);
+        State = StateType.Idle;
+    }
+    #endregion Attack
 }
