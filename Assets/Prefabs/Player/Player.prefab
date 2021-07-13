@@ -183,7 +183,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpYMult: 1
+  jumpYMult: 60
   jumpTimeMult: 1
   dashCoolTime: 2
   dashableDistance: 10
