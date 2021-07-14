@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
         {
             if (state == value)
                 return;
-            Debug.Log($"{state} -> {value}");
             state = value;
             animator.Play(State.ToString());
         }

@@ -62,10 +62,14 @@ public class Goblin : MonoBehaviour
         isChase = true;
         CurrentFSM = ChaseCo;
     }
-
+    void Playanim(string str)
+    {
+        animator.Play(str);
+        Debug.Log(str);
+    }
     IEnumerator ChaseCo()
     {
-        animator.Play("Run");
+        animator.Play("Run", 0, 0);
 
         while (isChase)
         {
@@ -86,17 +90,19 @@ public class Goblin : MonoBehaviour
     }
 
     [SerializeField] float attackRange = 10f;
-    [SerializeField] float attackTime = 1f;
+    [SerializeField] float attackTime = 1.2f;
     [SerializeField] float attackApplyTime = 0.2f;
     IEnumerator AttackCo()
     {
-        animator.Play("Attack");
+        animator.Play("Attack", 0, 0);
+
         yield return new WaitForSeconds(attackApplyTime);
 
         //실제 어택
         if (Vector3.Distance(player.transform.position, transform.position) < attackRange)
         {//플레이어 때리자
             player.TakeHit(power);
+            Debug.Log("공격함");
         }
 
         yield return new WaitForSeconds(attackTime - attackApplyTime);
