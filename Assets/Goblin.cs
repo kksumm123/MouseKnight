@@ -69,7 +69,7 @@ public class Goblin : MonoBehaviour
     }
     IEnumerator ChaseCo()
     {
-        PlayAnimClip("Run");
+        PlayAnimClip("Run", 0, 0);
 
         while (isChase)
         {
@@ -94,7 +94,7 @@ public class Goblin : MonoBehaviour
     [SerializeField] float attackApplyTime = 0.5f;
     IEnumerator AttackCo()
     {
-        PlayAnimClip("Attack");
+        PlayAnimClip("Attack", 0, 0);
 
         yield return new WaitForSeconds(attackApplyTime);
 
@@ -128,9 +128,14 @@ public class Goblin : MonoBehaviour
 
 
     #region Methods
-    void PlayAnimClip(string aniStateName)
+    void PlayAnimClip(string aniStateName, int? layer = null, float? normalizedTime = null)
     {
-        animator.Play(aniStateName, 0, 0);
+        if (layer != null && normalizedTime != null)
+            animator.Play(aniStateName, (int)layer, (float)normalizedTime);
+        if (layer != null && normalizedTime == null)
+            animator.Play(aniStateName, (int)layer);
+        else
+            animator.Play(aniStateName);
     }
     public void TakeHit(float damage)
     {
