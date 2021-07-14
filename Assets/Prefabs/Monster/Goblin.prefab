@@ -148,8 +148,9 @@ MonoBehaviour:
   detectRange: 40
   attackRange: 10
   attackTime: 1
-  attackApplyTime: 0.2
+  attackApplyTime: 0.5
   TakeHitTime: 0.3
+  deathTime: 0.5
 --- !u!195 &8296028115448904628
 NavMeshAgent:
   m_ObjectHideFlags: 0

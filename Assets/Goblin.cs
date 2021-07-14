@@ -48,7 +48,7 @@ public class Goblin : MonoBehaviour
         //IdleCo
         // 시작하면 Idle
         // 플레이어 근접하면 추격
-        animator.Play("Idle");
+        PlayAnimClip("Idle");
 
         // 감지거리보다 크면 while, 작으면 탈출
         while (
@@ -69,7 +69,7 @@ public class Goblin : MonoBehaviour
     }
     IEnumerator ChaseCo()
     {
-        animator.Play("Run", 0, 0);
+        PlayAnimClip("Run");
 
         while (isChase)
         {
@@ -90,11 +90,11 @@ public class Goblin : MonoBehaviour
     }
 
     [SerializeField] float attackRange = 10f;
-    [SerializeField] float attackTime = 1.2f;
-    [SerializeField] float attackApplyTime = 0.2f;
+    [SerializeField] float attackTime = 1f;
+    [SerializeField] float attackApplyTime = 0.5f;
     IEnumerator AttackCo()
     {
-        animator.Play("Attack", 0, 0);
+        PlayAnimClip("Attack");
 
         yield return new WaitForSeconds(attackApplyTime);
 
@@ -111,7 +111,7 @@ public class Goblin : MonoBehaviour
     [SerializeField] float TakeHitTime = 0.3f;
     private IEnumerator TakeHitCo()
     {
-        animator.Play("TakeHit");
+        PlayAnimClip("TakeHit");
         yield return new WaitForSeconds(TakeHitTime); ;
         if (hp > 0)
             CurrentFSM = IdleCo;
@@ -121,11 +121,17 @@ public class Goblin : MonoBehaviour
     [SerializeField] float deathTime = 0.5f;
     IEnumerator DeathCo()
     {
-        animator.Play("Death");
+        PlayAnimClip("Death");
         yield return new WaitForSeconds(deathTime);
         Destroy(gameObject);
     }
 
+
+    #region Methods
+    void PlayAnimClip(string aniStateName)
+    {
+        animator.Play(aniStateName, 0, 0);
+    }
     public void TakeHit(float damage)
     {
         hp -= (int)damage;
@@ -146,4 +152,5 @@ public class Goblin : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+    #endregion Methods
 }
