@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ public class Goblin : MonoBehaviour
     }
     Player player;
     Animator animator;
+    SpriteRenderer spriteRenderer;
 
     [SerializeField] int hp = 50;
     [SerializeField] int power = 10;
@@ -29,6 +31,7 @@ public class Goblin : MonoBehaviour
     {
         player = Player.instance;
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         yield return null;
 
         isLive = true;
@@ -123,7 +126,10 @@ public class Goblin : MonoBehaviour
     {
         PlayAnimClip("Death");
         yield return new WaitForSeconds(deathTime);
-        Destroy(gameObject);
+        spriteRenderer.DOFade(0, 1).OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
     }
 
 
