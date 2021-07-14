@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     enum StateType
     {
+        NONE,
         Idle,
         Walk,
         JumpUp,
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         TakeHit,
         Death,
     }
+    [SerializeField]
     StateType state;
     StateType State
     {
@@ -61,7 +63,7 @@ public class Player : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemyLayer = 1 << LayerMask.NameToLayer("Monster");
         attackCollider = GetComponentInChildren<SphereCollider>(true);
-        State = StateType.Idle;
+        state = StateType.NONE;
     }
     void Update()
     {

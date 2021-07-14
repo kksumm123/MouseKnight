@@ -102,7 +102,6 @@ public class Goblin : MonoBehaviour
         if (Vector3.Distance(player.transform.position, transform.position) < attackRange)
         {//플레이어 때리자
             player.TakeHit(power);
-            Debug.Log("공격함");
         }
 
         yield return new WaitForSeconds(attackTime - attackApplyTime);

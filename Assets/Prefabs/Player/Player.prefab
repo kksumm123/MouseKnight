@@ -191,6 +191,7 @@ MonoBehaviour:
   speed: 60
   stopDistance: 7
   walkDistance: 12
+  state: 0
   jumpYac:
     serializedVersion: 2
     m_Curve:
