@@ -7,7 +7,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     Func<IEnumerator> currentFSM;
-    Func<IEnumerator> CurrentFSM
+    protected Func<IEnumerator> CurrentFSM
     {
         get => currentFSM;
         set
@@ -44,7 +44,7 @@ public class Monster : MonoBehaviour
                 yield return null;
         }
     }
-
+    #region IdleCo
     [SerializeField] float detectRange = 40;
     private IEnumerator IdleCo()
     {
@@ -65,11 +65,9 @@ public class Monster : MonoBehaviour
         isChase = true;
         CurrentFSM = ChaseCo;
     }
-    void Playanim(string str)
-    {
-        animator.Play(str);
-        Debug.Log(str);
-    }
+    #endregion IdleCo
+
+    #region ChaseCo
     IEnumerator ChaseCo()
     {
         PlayAnimClip("Run", 0, 0);
@@ -83,19 +81,25 @@ public class Monster : MonoBehaviour
 
             if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
             {
-                CurrentFSM = AttackCo;
+                SelectAttackType();
                 yield break;
             }
 
             yield return null;
         }
-
     }
 
+    protected virtual void SelectAttackType()
+    {
+        CurrentFSM = AttackCo;
+    }
+    #endregion ChaseCo
+
+    #region AttackCo
     [SerializeField] float attackRange = 10f;
     [SerializeField] float attackTime = 1f;
     [SerializeField] float attackApplyTime = 0.5f;
-    IEnumerator AttackCo()
+    protected IEnumerator AttackCo()
     {
         PlayAnimClip("Attack", 0, 0);
 
@@ -110,7 +114,9 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(attackTime - attackApplyTime);
         CurrentFSM = ChaseCo;
     }
+    #endregion AttackCo
 
+    #region TakeHit
     [SerializeField] float TakeHitTime = 0.3f;
     private IEnumerator TakeHitCo()
     {
@@ -131,7 +137,7 @@ public class Monster : MonoBehaviour
             Destroy(gameObject);
         });
     }
-
+    #endregion TakeHit
 
     #region Methods
     void PlayAnimClip(string aniStateName, int? layer = null, float? normalizedTime = null)
