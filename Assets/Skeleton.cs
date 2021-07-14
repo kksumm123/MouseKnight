@@ -37,6 +37,7 @@ public class Skeleton : Monster
     }
 
     [SerializeField] GameObject blockEffect;
+    bool isFrontofPlayer = false;
     enum Direction
     {
         Left,

@@ -164,10 +164,13 @@ public class Monster : MonoBehaviour
     }
     public virtual void TakeHit(float damage)
     {
-        hp -= (int)damage;
-        StopCo(coroutineHandle);
-        coroutineHandle = null;
-        CurrentFSM = TakeHitCo;
+        if (hp > 0)
+        { //살아있는 동안에만
+            hp -= (int)damage;
+            StopCo(coroutineHandle);
+            coroutineHandle = null;
+            CurrentFSM = TakeHitCo;
+        }
     }
     void StopCo(Coroutine handle)
     {
