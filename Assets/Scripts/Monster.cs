@@ -46,7 +46,7 @@ public class Monster : MonoBehaviour
     }
     #region IdleCo
     [SerializeField] float detectRange = 40;
-    private IEnumerator IdleCo()
+    protected IEnumerator IdleCo()
     {
         //IdleCo
         // 시작하면 Idle
@@ -68,7 +68,7 @@ public class Monster : MonoBehaviour
     #endregion IdleCo
 
     #region ChaseCo
-    IEnumerator ChaseCo()
+    protected IEnumerator ChaseCo()
     {
         PlayAnimClip("Run", 0, 0);
 
@@ -118,7 +118,7 @@ public class Monster : MonoBehaviour
 
     #region TakeHit
     [SerializeField] float TakeHitTime = 0.3f;
-    private IEnumerator TakeHitCo()
+    protected IEnumerator TakeHitCo()
     {
         PlayAnimClip("TakeHit");
         yield return new WaitForSeconds(TakeHitTime); ;
@@ -128,7 +128,7 @@ public class Monster : MonoBehaviour
             CurrentFSM = DeathCo;
     }
     [SerializeField] float deathTime = 0.5f;
-    IEnumerator DeathCo()
+    protected IEnumerator DeathCo()
     {
         PlayAnimClip("Death");
         yield return new WaitForSeconds(deathTime);
@@ -140,7 +140,7 @@ public class Monster : MonoBehaviour
     #endregion TakeHit
 
     #region Methods
-    void PlayAnimClip(string aniStateName, int? layer = null, float? normalizedTime = null)
+    protected void PlayAnimClip(string aniStateName, int? layer = null, float? normalizedTime = null)
     {
         if (layer != null && normalizedTime != null)
             animator.Play(aniStateName, (int)layer, (float)normalizedTime);
@@ -149,7 +149,7 @@ public class Monster : MonoBehaviour
         else
             animator.Play(aniStateName);
     }
-    public void TakeHit(float damage)
+    public virtual void TakeHit(float damage)
     {
         hp -= (int)damage;
         StopCo(coroutineHandle);
