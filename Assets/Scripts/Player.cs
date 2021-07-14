@@ -266,7 +266,7 @@ public class Player : MonoBehaviour
         enemyColliders = Physics.OverlapSphere(attackCollider.transform.position, attackCollider.radius, enemyLayer);
         foreach (var item in enemyColliders)
         {
-            item.GetComponent<Goblin>().TakeHit(power);
+            item.GetComponent<Monster>().TakeHit(power);
         }
 
         yield return new WaitForSeconds(attackTime - attackApplyTime);

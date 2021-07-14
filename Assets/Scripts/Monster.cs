@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : MonoBehaviour
+public class Monster : MonoBehaviour
 {
     Func<IEnumerator> currentFSM;
     Func<IEnumerator> CurrentFSM
