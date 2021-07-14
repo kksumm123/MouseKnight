@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     float originSpeed;
     [SerializeField] float stopDistance = 7;
     [SerializeField] float walkDistance = 12;
-    Transform moustPointer;
     Animator animator;
     SpriteTrailRenderer.SpriteTrailRenderer spriteTrailRenderer;
     enum JumpStateType
@@ -57,7 +56,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         originSpeed = speed;
-        moustPointer = GameObject.Find("mousePointer").GetComponent<Transform>();
         animator = GetComponentInChildren<Animator>();
         spriteTrailRenderer = GetComponentInChildren<SpriteTrailRenderer.SpriteTrailRenderer>();
         agent = GetComponent<NavMeshAgent>();
@@ -94,7 +92,6 @@ public class Player : MonoBehaviour
         if (plain.Raycast(ray, out enter))
         {
             Vector3 hitPoint = ray.GetPoint(enter);
-            moustPointer.position = hitPoint;
             float distnace = Vector3.Distance(hitPoint, transform.position);
             dir = hitPoint - transform.position;
             dir.Normalize();
