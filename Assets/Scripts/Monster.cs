@@ -16,7 +16,7 @@ public class Monster : MonoBehaviour
             coroutineHandle = null;
         }
     }
-    Player player;
+    protected Player player;
     Animator animator;
     SpriteRenderer spriteRenderer;
 
