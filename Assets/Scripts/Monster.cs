@@ -6,6 +6,13 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public static List<Monster> monsters = new List<Monster>();
+
+    private void Awake()
+    {
+        monsters.Add(this);
+    }
+
     Func<IEnumerator> currentFSM;
     protected Func<IEnumerator> CurrentFSM
     {
@@ -131,6 +138,12 @@ public class Monster : MonoBehaviour
     protected IEnumerator DeathCo()
     {
         PlayAnimClip("Death");
+        monsters.Remove(this);
+        Debug.Log($"남은 몬스터 수 : {monsters.Count}");
+        if (monsters.Count == 0)
+        {
+            // 다음 스테이지 로드
+        }
         yield return new WaitForSeconds(deathTime);
         spriteRenderer.DOFade(0, 1).OnComplete(() =>
         {
