@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
 {
     public static List<Monster> monsters = new List<Monster>();
 
-    private void Awake()
+    protected virtual void Awake()
     {
         monsters.Add(this);
     }
