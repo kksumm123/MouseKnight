@@ -15,11 +15,11 @@ C:/UnityProject/Study/MouseKnight
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-14616
+6410
 Successfully changed project path to: C:/UnityProject/Study/MouseKnight
 C:/UnityProject/Study/MouseKnight
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 21.65 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 24.10 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.13f1 (71691879b7f5)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.3.13f1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'E:/Unity/2020.3.13f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.3.13f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.3.13f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56380
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56904
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.3.13f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000681 seconds.
+Registered in 0.000738 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 22.90 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 25.69 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.196 seconds
+- Completed reload, in  1.265 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002553 seconds.
+Registered in 0.003531 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.656 seconds
+- Completed reload, in  0.785 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.35 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.39 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1581 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 73.7 MB.
-System memory in use after: 73.8 MB.
+Unloading 1590 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 75.1 MB.
+System memory in use after: 75.2 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2016.
-Total: 1.547300 ms (FindLiveObjects: 0.128300 ms CreateObjectMapping: 0.029100 ms MarkObjects: 1.314000 ms  DeleteObjects: 0.075300 ms)
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 2028.
+Total: 2.057400 ms (FindLiveObjects: 0.238800 ms CreateObjectMapping: 0.063000 ms MarkObjects: 1.687300 ms  DeleteObjects: 0.067600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -78,151 +78,24 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  path: Assets/EXP.png
-  artifactKey: Guid(690e8c891d12cfd4ba51a21b82a6e9e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/EXP.png using Guid(690e8c891d12cfd4ba51a21b82a6e9e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69c71e63dc30afab1c239e4c97b0fccf') in 0.067817 seconds 
-  Import took 0.069719 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000130 seconds.
-  path: Assets/XpPoint.psd
-  artifactKey: Guid(27dba12377bda4044a4347f86d4b376f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/XpPoint.psd using Guid(27dba12377bda4044a4347f86d4b376f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '314d7531460e2883a1a91865d4c86319') in 0.005670 seconds 
-  Import took 0.006988 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 117.452314 seconds.
-  path: Assets/Hp.psd
-  artifactKey: Guid(eecaa95eb1368864f97bc5571127addb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Hp.psd using Guid(eecaa95eb1368864f97bc5571127addb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b59b45c7f4f1693bc80ea3da08c27758') in 0.004538 seconds 
-  Import took 0.006611 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Pause.psd
-  artifactKey: Guid(c503364e0cf06a34b80735d6347bae12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Pause.psd using Guid(c503364e0cf06a34b80735d6347bae12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09fb72ba733219ce14c9d7388ce17d8f') in 0.004064 seconds 
-  Import took 0.005677 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000117 seconds.
-  path: Assets/Stamina.psd
-  artifactKey: Guid(4099b8f1b2b89d742998dfe3d9e3b2b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Stamina.psd using Guid(4099b8f1b2b89d742998dfe3d9e3b2b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28bebb53eab2cfabfbee86c0a581fa8a') in 0.003267 seconds 
-  Import took 0.004671 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 66.415943 seconds.
-  path: Assets/Images
-  artifactKey: Guid(e7de5c40b6b76254681bf1bcd9fb3785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images using Guid(e7de5c40b6b76254681bf1bcd9fb3785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33e69ba9684e6955d76118036b1a4520') in 0.001687 seconds 
-  Import took 0.003671 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 22.298667 seconds.
-  path: Assets/Images/XpPoint.psd
-  artifactKey: Guid(27dba12377bda4044a4347f86d4b376f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/XpPoint.psd using Guid(27dba12377bda4044a4347f86d4b376f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '088ef7cf7a1591c8f2edb9f6a9b3852a') in 0.034781 seconds 
-  Import took 0.036855 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Images/Hp.psd
-  artifactKey: Guid(eecaa95eb1368864f97bc5571127addb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Hp.psd using Guid(eecaa95eb1368864f97bc5571127addb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '423716d8d0c94f139cfc94b315f36e85') in 0.005382 seconds 
-  Import took 0.007053 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000095 seconds.
-  path: Assets/Images/Pause.psd
-  artifactKey: Guid(c503364e0cf06a34b80735d6347bae12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Pause.psd using Guid(c503364e0cf06a34b80735d6347bae12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ae7974b781826a5605f02393a67301') in 0.004481 seconds 
-  Import took 0.006185 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000119 seconds.
-  path: Assets/Images/Stamina.psd
-  artifactKey: Guid(4099b8f1b2b89d742998dfe3d9e3b2b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Images/Stamina.psd using Guid(4099b8f1b2b89d742998dfe3d9e3b2b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '735a42050fbf09fb865fc06f8cce7a42') in 0.011483 seconds 
-  Import took 0.013122 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 405.056091 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e3c6f1deb8d880a72856285f10ef6cf') in 0.012089 seconds 
-  Import took 0.014343 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.016154 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e3c6f1deb8d880a72856285f10ef6cf') in 0.003197 seconds 
-  Import took 0.005123 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 62.613958 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3eb39603ad02ac2bec78f25fa9ef39c') in 0.010365 seconds 
-  Import took 0.012469 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.031735 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '152931e91a2e5c923103495a75aeda68') in 0.003361 seconds 
-  Import took 0.005224 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.203537 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ec3444adac87a0955fc04bf9dd78c18') in 0.003344 seconds 
-  Import took 0.005309 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.784437 seconds.
-  path: Assets/Prefabs/StageCanvas.prefab
-  artifactKey: Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/StageCanvas.prefab using Guid(5337d08efe41d3f4880d70988ad291c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69218cf5d55eeb3bee6de2a9a39c1304') in 0.003295 seconds 
-  Import took 0.005197 seconds .
-
-========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.002497 seconds.
+Registered in 0.003207 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.646 seconds
-Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1574 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 76.7 MB.
-System memory in use after: 76.8 MB.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.712 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1583 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 74.9 MB.
+System memory in use after: 75.0 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 2035.
-Total: 1.781000 ms (FindLiveObjects: 0.185700 ms CreateObjectMapping: 0.029900 ms MarkObjects: 1.518600 ms  DeleteObjects: 0.046200 ms)
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2031.
+Total: 1.539700 ms (FindLiveObjects: 0.129300 ms CreateObjectMapping: 0.030400 ms MarkObjects: 1.338200 ms  DeleteObjects: 0.041100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
