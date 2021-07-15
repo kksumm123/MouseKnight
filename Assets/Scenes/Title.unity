@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 374828199}
   - component: {fileID: 374828198}
   - component: {fileID: 374828197}
+  - component: {fileID: 374828201}
   m_Layer: 5
   m_Name: PersistCanvas
   m_TagString: Untagged
@@ -223,6 +224,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &374828201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374828196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e99358caafa08db4ab8d055a428bad2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackScreen: {fileID: 0}
 --- !u!1 &381483994
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1c23d6f716b11d4293da6bae4818975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadSceneName: Stage1
 --- !u!4 &2094098491
 Transform:
   m_ObjectHideFlags: 0
