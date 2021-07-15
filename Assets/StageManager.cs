@@ -40,7 +40,7 @@ public class StageManager : MonoBehaviour
             GameData.stageInfoMap[SceneProperty.instance.StageID];
         string stageName = stageInfo.titleString;
         StageCanvas.instance.stageNameText.transform.localPosition 
-            = new Vector3(-1000, 0, 0);
+            = new Vector3(-2000, 0, 0);
         StageCanvas.instance.stageNameText.transform.DOLocalMoveX(0, 1)
             .SetEase(inEaseType);
         StageCanvas.instance.stageNameText.text = stageName;
@@ -48,7 +48,7 @@ public class StageManager : MonoBehaviour
         // 2초 쉬었다가
         yield return new WaitForSeconds(2f);
 
-        StageCanvas.instance.stageNameText.transform.DOLocalMoveX(-1000, 1)
+        StageCanvas.instance.stageNameText.transform.DOLocalMoveX(-2000, 1)
             .SetEase(outEaseType);
 
         //플레이어를 움직일 수 있게
