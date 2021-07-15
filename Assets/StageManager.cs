@@ -18,10 +18,17 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
     public GameStateType gameState = GameStateType.Ready;
+
+    public int sumMonsterCount;
+    public int damageTakenPoint;
+    public int gradeText;
     private void Awake()
     {
         instance = this;
         gameState = GameStateType.Ready;
+
+        List<SpawnPoint> allSpawnPoints = 
+            new List<SpawnPoint>(FindObjectsOfType<SpawnPoint>());
     }
 
     public Ease inEaseType = Ease.InElastic;
@@ -39,7 +46,7 @@ public class StageManager : MonoBehaviour
         StageInfo stageInfo =
             GameData.stageInfoMap[SceneProperty.instance.StageID];
         string stageName = stageInfo.titleString;
-        StageCanvas.instance.stageNameText.transform.localPosition 
+        StageCanvas.instance.stageNameText.transform.localPosition
             = new Vector3(-2000, 0, 0);
         StageCanvas.instance.stageNameText.transform.DOLocalMoveX(0, 1)
             .SetEase(inEaseType);
