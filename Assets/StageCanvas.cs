@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class StageCanvas : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static StageCanvas instance;
+    public CanvasGroup blackScreen;
+    void Awake()
     {
-        
-    }
+        instance = this;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DontDestroyOnLoad(gameObject);
+        blackScreen = transform.Find("BlackScreen").GetComponent<CanvasGroup>();
     }
 }

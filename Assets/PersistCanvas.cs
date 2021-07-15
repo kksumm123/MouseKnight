@@ -13,14 +13,4 @@ public class PersistCanvas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         blackScreen = transform.Find("BlackScreen").GetComponent<CanvasGroup>();
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
