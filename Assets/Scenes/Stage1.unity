@@ -717,6 +717,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dead80ff5c3abe438049c82635ab721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageInfos:
+  - stageID: 0
+    titleString: 
+    rewardXP: 0
+  - stageID: 1
+    titleString: "\uC5EC\uD589\uC758 \uC2DC\uC791"
+    rewardXP: 100
 --- !u!4 &1277739397
 Transform:
   m_ObjectHideFlags: 0

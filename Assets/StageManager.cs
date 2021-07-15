@@ -40,6 +40,11 @@ public class StageManager : MonoBehaviour
         StageCanvas.instance.stageNameText.text = stageName;
 
         // 2초 쉬었다가
+        yield return new WaitForSeconds(2f);
+
+        StageCanvas.instance.stageNameText.transform.DOMoveX(-2000, 1)
+            .SetEase(Ease.OutBounce);
+
         //플레이어를 움직일 수 있게
         gameState = GameStateType.Playing;
 
