@@ -8,7 +8,7 @@ using UnityEngine;
 //1. 플레이어 로드게임 시작시까지 플레이어 대기시킴
 //2. 스테이지 시작시 화면 밝아지게
 //3. 몬스터 로드
-public enum GameStageType
+public enum GameStateType
 {
     Ready,
     Playing,
@@ -16,10 +16,12 @@ public enum GameStageType
 }
 public class StageManager : MonoBehaviour
 {
-    public GameStageType gameStage = GameStageType.Ready;
+    public static StageManager instance;
+    public GameStateType gameState = GameStateType.Ready;
     private void Awake()
     {
-        gameStage = GameStageType.Ready;
+        instance = this;
+        gameState = GameStateType.Ready;
     }
 
     IEnumerator Start()
@@ -36,7 +38,7 @@ public class StageManager : MonoBehaviour
 
         // 2초 쉬었다가
         //플레이어를 움직일 수 있게
-        gameStage = GameStageType.Playing;
+        gameState = GameStateType.Playing;
 
         yield return null;
     }
