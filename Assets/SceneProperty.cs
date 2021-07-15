@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageProperty : MonoBehaviour
+public class SceneProperty : MonoBehaviour
 {
-    public static StageProperty instance;
+    public static SceneProperty instance;
     void Awake()
     {
         instance = this;
