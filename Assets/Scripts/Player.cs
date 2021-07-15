@@ -293,6 +293,7 @@ public class Player : MonoBehaviour
         if (State == StateType.Death)
             return;
 
+        StageManager.Instance.damageTakenPoint += damage;
         hp -= damage;
         // 피격 모션
 
