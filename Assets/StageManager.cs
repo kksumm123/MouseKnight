@@ -15,22 +15,21 @@ public enum GameStateType
     Playing,
     StageEnd,
 }
-public class StageManager : MonoBehaviour
+public class StageManager : BaseUI<StageManager>
 {
-    public static StageManager instance;
     public GameStateType gameState = GameStateType.Ready;
 
-    public int sumMonsterCount;
+    public int enemiesKilledCount;
     public int damageTakenPoint;
-    public int gradeText;
-    private void Awake()
+    public int sumMonsterCount;
+    new void Awake()
     {
-        instance = this;
+        base.Awake();
         gameState = GameStateType.Ready;
 
         List<SpawnPoint> allSpawnPoints = 
             new List<SpawnPoint>(FindObjectsOfType<SpawnPoint>());
-        sumMonsterCount = allSpawnPoints.Where(x => x.spawnType != SpawnType.Player).Count();
+        enemiesKilledCount = allSpawnPoints.Where(x => x.spawnType != SpawnType.Player).Count();
     }
 
     public Ease inEaseType = Ease.InElastic;

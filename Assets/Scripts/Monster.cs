@@ -36,7 +36,7 @@ public class Monster : MonoBehaviour
     bool isChase = false;
     IEnumerator Start()
     {
-        while (StageManager.instance.gameState != GameStateType.Playing)
+        while (StageManager.Instance.gameState != GameStateType.Playing)
             yield return null;
 
         player = Player.instance;
@@ -150,6 +150,7 @@ public class Monster : MonoBehaviour
     {
         PlayAnimClip("Death");
         monsters.Remove(this);
+        StageManager.Instance.enei
         Debug.Log($"남은 몬스터 수 : {monsters.Count}");
         if (monsters.Count == 0)
         {
