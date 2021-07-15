@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // 스테이지 이름 표시하자
-        //Stage1
+        //string stageText = 
 
         // 2초 쉬었다가
         //플레이어를 움직일 수 있게
