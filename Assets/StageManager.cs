@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //스테이지에서 발행하는 모든 이벤트 관리
@@ -29,6 +30,7 @@ public class StageManager : MonoBehaviour
 
         List<SpawnPoint> allSpawnPoints = 
             new List<SpawnPoint>(FindObjectsOfType<SpawnPoint>());
+        sumMonsterCount = allSpawnPoints.Where(x => x.spawnType != SpawnType.Player).Count();
     }
 
     public Ease inEaseType = Ease.InElastic;
