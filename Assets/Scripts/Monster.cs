@@ -46,7 +46,14 @@ public class Monster : MonoBehaviour
 
         while (isLive)
         { //상태를 무한히 반복해서 실행하는 부분
+            var previousFSM = currentFSM;
+
             coroutineHandle = StartCoroutine(CurrentFSM());
+
+            // FSM 안에서 에러 발생시 무한 루프 도는 것을 방지하기 위해서 추가함
+            if (coroutineHandle == null && previousFSM == currentFSM)
+                yield return null;
+
             while (coroutineHandle != null)
                 yield return null;
         }
