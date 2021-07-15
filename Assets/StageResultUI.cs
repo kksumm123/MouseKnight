@@ -13,15 +13,15 @@ public class StageResultUI : MonoBehaviour
 
     void Start()
     {
-        gradeText = transform.Find("StageResultUI/GradeText").GetComponent<Text>();
-        enemiesKiiledText = transform.Find("StageResultUI/EnemiesKiiledText").GetComponent<Text>();
-        damageTakenText = transform.Find("StageResultUI/DamageTakenText").GetComponent<Text>();
-        continueButton = transform.Find("StageResultUI/ContinueButton").GetComponent<Button>();
+        gradeText = transform.Find("GradeText").GetComponent<Text>();
+        enemiesKiiledText = transform.Find("EnemiesKiiledText").GetComponent<Text>();
+        damageTakenText = transform.Find("DamageTakenText").GetComponent<Text>();
+        continueButton = transform.Find("ContinueButton").GetComponent<Button>();
         continueButton.onClick.AddListener(LoadNextStage);
     }
 
     private void LoadNextStage()
     {
-        throw new NotImplementedException();
+        Debug.LogWarning("LoadNextStage");
     }
 }
