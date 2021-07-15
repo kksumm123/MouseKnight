@@ -24,4 +24,11 @@ public class StageResultUI : BaseUI<StageResultUI>
     {
         Debug.LogWarning("LoadNextStage");
     }
+
+    protected override void OnShow()
+    {
+        enemiesKiiledText.text = StageManager.Instance.enemiesKilledCount.ToString();
+        damageTakenText.text = StageManager.Instance.damageTakenPoint.ToString();
+        gradeText.text = "A"; //임시로 A로 나오도록 
+    }
 }

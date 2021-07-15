@@ -155,6 +155,8 @@ public class Monster : MonoBehaviour
         if (monsters.Count == 0)
         {
             // 다음 스테이지 로드
+            // 결과창 UI Show
+            StageResultUI.Instance.Show();
         }
         yield return new WaitForSeconds(deathTime);
         spriteRenderer.DOFade(0, 1).OnComplete(() =>
