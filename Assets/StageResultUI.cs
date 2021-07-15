@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StageResultUI : MonoBehaviour
+public class StageResultUI : BaseUI<StageResultUI>
 {
     Text gradeText;
     Text enemiesKiiledText;
