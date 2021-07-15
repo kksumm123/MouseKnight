@@ -10,7 +10,7 @@ public enum SpawnType
 }
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] SpawnType spawnType;
+    public SpawnType spawnType;
     private void Awake()
     {
         string spawnPrefabName;

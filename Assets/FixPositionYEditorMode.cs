@@ -21,6 +21,7 @@ public class FixPositionYEditorMode : MonoBehaviour
     [SerializeField] SpawnType spawnType;
     private void OnDrawGizmos()
     {
+        spawnType = GetComponent<SpawnPoint>().spawnType;
         string iconName;
         switch (spawnType)
         {
