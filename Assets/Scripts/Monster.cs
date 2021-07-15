@@ -36,6 +36,9 @@ public class Monster : MonoBehaviour
     bool isChase = false;
     IEnumerator Start()
     {
+        while (StageManager.instance.gameState != GameStateType.Playing)
+            yield return null;
+
         player = Player.instance;
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
