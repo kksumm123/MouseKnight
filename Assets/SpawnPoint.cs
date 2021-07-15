@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum SpawnType
+{
+    Player,
+    Goblin,
+    Skeleton,
+    Boss,
+}
 public class SpawnPoint : MonoBehaviour
 {
-    public enum SpawnType
-    {
-        Player,
-        Goblin,
-        Skeleton,
-        Boss,
-    }
     [SerializeField] SpawnType spawnType;
     private void Awake()
     {
@@ -30,7 +29,7 @@ public class SpawnPoint : MonoBehaviour
                 spawnPrefabName = "Boss";
                 break;
             default:
-                spawnPrefabName = "NONE";
+                spawnPrefabName = "";
                 break;
         }
         Instantiate(Resources.Load(spawnPrefabName)

@@ -17,4 +17,30 @@ public class FixPositionYEditorMode : MonoBehaviour
         pos.y = 0;
         transform.position = pos;
     }
+
+    [SerializeField] SpawnType spawnType;
+    private void OnDrawGizmos()
+    {
+        string iconName;
+        switch (spawnType)
+        {
+            case SpawnType.Player:
+                iconName = "Player";
+                break;
+            case SpawnType.Goblin:
+                iconName = "Goblin";
+                break;
+            case SpawnType.Skeleton:
+                iconName = "Skelelton";
+                break;
+            case SpawnType.Boss:
+                iconName = "Boss";
+                break;
+            default:
+                iconName = "";
+                break;
+        }
+        var f = iconName + ".png";
+        Gizmos.DrawIcon(transform.position, f, true);
+    }
 }
