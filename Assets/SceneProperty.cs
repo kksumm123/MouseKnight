@@ -15,10 +15,6 @@ public class SceneProperty : MonoBehaviour
         if(GameData.instance == null)
             Instantiate(Resources.Load("GameData"));
     }
-    void OnDestroy()
-    {
-        instance = null;
-    }
     public int StageID = -1;
     public enum SceneType
     {
