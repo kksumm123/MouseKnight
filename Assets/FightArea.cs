@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FightArea : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
-    }
+        GetComponent<MeshRenderer>().enabled = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var spawnPoints = GetComponentsInChildren<SpawnPoint>();
+
+        foreach (var item in spawnPoints)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 }
