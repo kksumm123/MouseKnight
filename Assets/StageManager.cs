@@ -24,6 +24,8 @@ public class StageManager : MonoBehaviour
         gameState = GameStateType.Ready;
     }
 
+    public Ease inEaseType = Ease.InElastic;
+    public Ease outEaseType = Ease.OutElastic;
     IEnumerator Start()
     {
         //화면 어두운 상태로 만들고 2초 동안 밝아지게 하자
@@ -34,16 +36,20 @@ public class StageManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         // 스테이지 이름 표시하자
-        StageInfo stageInfo = 
+        StageInfo stageInfo =
             GameData.stageInfoMap[SceneProperty.instance.StageID];
         string stageName = stageInfo.titleString;
+        StageCanvas.instance.stageNameText.transform.localPosition 
+            = new Vector3(-1000, 0, 0);
+        StageCanvas.instance.stageNameText.transform.DOLocalMoveX(0, 1)
+            .SetEase(inEaseType);
         StageCanvas.instance.stageNameText.text = stageName;
 
         // 2초 쉬었다가
         yield return new WaitForSeconds(2f);
 
-        StageCanvas.instance.stageNameText.transform.DOMoveX(-2000, 1)
-            .SetEase(Ease.OutBounce);
+        StageCanvas.instance.stageNameText.transform.DOLocalMoveX(-1000, 1)
+            .SetEase(outEaseType);
 
         //플레이어를 움직일 수 있게
         gameState = GameStateType.Playing;
@@ -53,6 +59,6 @@ public class StageManager : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 }
