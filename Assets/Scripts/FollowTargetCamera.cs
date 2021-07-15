@@ -12,9 +12,11 @@ public class FollowTargetCamera : MonoBehaviour
     void Start()
     {
         var camera = GetComponent<Camera>();
-
+        
         float height = 2f * camera.orthographicSize;
         float width = height * camera.aspect;
+
+        target = Player.instance.transform;
 
         offset = target.position - transform.position;
         offset.x = 0;
