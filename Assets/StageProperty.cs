@@ -8,6 +8,9 @@ public class StageProperty : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        if (PersistCanvas.instance == null)
+            Instantiate(Resources.Load("PersistCanvas"));
     }
     void OnDestroy()
     {
