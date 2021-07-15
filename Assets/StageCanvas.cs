@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageCanvas : MonoBehaviour
 {
     public static StageCanvas instance;
-    public CanvasGroup blackScreen;
+    public Text stageNameText;
     void Awake()
     {
         instance = this;
 
         DontDestroyOnLoad(gameObject);
-        blackScreen = transform.Find("BlackScreen").GetComponent<CanvasGroup>();
+        stageNameText = transform.Find("StageNameText").GetComponent<Text>();
     }
 }
