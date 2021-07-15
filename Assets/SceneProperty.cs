@@ -24,6 +24,4 @@ public class SceneProperty : MonoBehaviour
         Title,
     }
     public SceneType sceneType = SceneType.Stage;
-
-
 }

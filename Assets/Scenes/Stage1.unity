@@ -596,6 +596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  inEaseType: 23
+  outEaseType: 24
 --- !u!4 &895773860
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +623,7 @@ GameObject:
   - component: {fileID: 1015542149}
   - component: {fileID: 1015542148}
   m_Layer: 0
-  m_Name: StageProperty
+  m_Name: SceneProperty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8140907ca5e3e840a5695d1f2e77ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageID: -1
+  StageID: 1
   sceneType: 1
 --- !u!4 &1015542149
 Transform:
@@ -718,12 +720,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfos:
-  - stageID: 0
-    titleString: 
-    rewardXP: 0
   - stageID: 1
     titleString: "\uC5EC\uD589\uC758 \uC2DC\uC791"
     rewardXP: 100
+  - stageID: 2
+    titleString: "\uC2A4\uCF08\uB808\uD1A4 \uB4F1\uC7A5"
+    rewardXP: 200
 --- !u!4 &1277739397
 Transform:
   m_ObjectHideFlags: 0
