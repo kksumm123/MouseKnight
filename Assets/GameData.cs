@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class StageInfo
 {
@@ -11,10 +12,13 @@ public class StageInfo
 public class GameData : MonoBehaviour
 {
     public static GameData instance;
-    public List<StageInfo> stageInfos;
+    [SerializeField] List<StageInfo> stageInfos;
+    public static Dictionary<int, StageInfo> stageInfoMap = new Dictionary<int, StageInfo>();
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        stageInfoMap = stageInfos.ToDictionary(x => x.stageID);
     }
 }
