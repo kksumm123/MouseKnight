@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d57412262835d409c0ad89388f5775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completeUiInite: 0
 --- !u!4 &536097565
 Transform:
   m_ObjectHideFlags: 0
@@ -1403,6 +1404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1843672130, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
+      propertyPath: m_Name
+      value: BG
+      objectReference: {fileID: 0}
     - target: {fileID: 3904144553694760200, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
       propertyPath: m_Name
       value: StageCanvas
@@ -1489,10 +1494,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3904144553694760204, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3904144553694760206, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
-      propertyPath: m_MatchWidthOrHeight
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
