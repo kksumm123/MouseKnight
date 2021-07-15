@@ -150,7 +150,7 @@ public class Monster : MonoBehaviour
     {
         PlayAnimClip("Death");
         monsters.Remove(this);
-        StageManager.Instance.enei
+        StageManager.Instance.enemiesKilledCount++;
         Debug.Log($"남은 몬스터 수 : {monsters.Count}");
         if (monsters.Count == 0)
         {
