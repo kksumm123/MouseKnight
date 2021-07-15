@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum SpawnType
     {
-        
+        Player,
+        Goblin,
+        Skeleton,
+        Boss,
     }
-
-    // Update is called once per frame
-    void Update()
+    [SerializeField] SpawnType spawnType;
+    private void Awake()
     {
-        
+        string spawnPrefabName;
+        switch (spawnType)
+        {
+            case SpawnType.Player:
+                spawnPrefabName = "Player";
+                break;
+            case SpawnType.Goblin:
+                spawnPrefabName = "Goblin";
+                break;
+            case SpawnType.Skeleton:
+                spawnPrefabName = "Skelelton";
+                break;
+            case SpawnType.Boss:
+                spawnPrefabName = "Boss";
+                break;
+            default:
+                spawnPrefabName = "NONE";
+                break;
+        }
+        Instantiate(Resources.Load(spawnPrefabName)
+            , transform.position, Quaternion.identity);
     }
 }
