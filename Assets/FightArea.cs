@@ -15,4 +15,17 @@ public class FightArea : MonoBehaviour
             item.gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>() == null)
+            return;
+
+        var spawnPoints = GetComponentsInChildren<SpawnPoint>(true);
+
+        foreach (var item in spawnPoints)
+        {
+            item.gameObject.SetActive(true);
+        }
+    }
 }
