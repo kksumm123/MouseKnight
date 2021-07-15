@@ -9,13 +9,17 @@ using UnityEngine;
 //3. 몬스터 로드
 public class StageManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        //화면 어두운 상태로 만들고 2초 동안 밝아지게 하자
+
+        // 스테이지 이름 표시하자
+        //Stage1
+
+        // 2초 쉬었다가
+        //플레이어를 움직일 수 있게
     }
 
-    // Update is called once per frame
     void Update()
     {
         
