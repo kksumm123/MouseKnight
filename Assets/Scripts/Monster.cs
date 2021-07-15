@@ -61,6 +61,7 @@ public class Monster : MonoBehaviour
         PlayAnimClip("Idle");
 
         // 감지거리보다 크면 while, 작으면 탈출
+        // player가 없으면 무한루프 되는 로직
         while (
             Vector3.Distance(transform.position, player.transform.position)
             > detectRange)
