@@ -64,9 +64,4 @@ public class StageManager : BaseUI<StageManager>
 
         yield return null;
     }
-
-    void Update()
-    {
-
-    }
 }
