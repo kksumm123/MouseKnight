@@ -37,7 +37,7 @@ public class StageManager : BaseUI<StageManager>
     IEnumerator Start()
     {
         //화면 어두운 상태로 만들고 2초 동안 밝아지게 하자
-        CanvasGroup blackscreen = PersistCanvas.instance.blackScreen;
+        CanvasGroup blackscreen = PersistCanvas.Instance.blackScreen;
         blackscreen.gameObject.SetActive(true);
         blackscreen.alpha = 1;
         blackscreen.DOFade(0, 2f);

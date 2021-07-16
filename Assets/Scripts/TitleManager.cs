@@ -11,7 +11,7 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         // 검은 화면에서 밝게 한다.
-        blackScreen = PersistCanvas.instance.blackScreen;
+        blackScreen = PersistCanvas.Instance.blackScreen;
         blackScreen.gameObject.SetActive(true);
         blackScreen.DOFade(0, 1.7f).OnComplete(() =>
             blackScreen.gameObject.SetActive(false));

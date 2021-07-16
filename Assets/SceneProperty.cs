@@ -9,7 +9,7 @@ public class SceneProperty : MonoBehaviour
     {
         instance = this;
 
-        if (PersistCanvas.instance == null)
+        if (PersistCanvas.Instance == null)
             Instantiate(Resources.Load("PersistCanvas"));
 
         if(GameData.instance == null)
