@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class StageResultUI : BaseUI<StageResultUI>
 {
+    public override string HierarchyPath => "StageCanvas/StageResultUI";
+
     Text gradeText;
     Text enemiesKiiledText;
     Text damageTakenText;
     Button continueButton;
 
-    void Start()
+    void Init()
     {
         gradeText = transform.Find("GradeText").GetComponent<Text>();
         enemiesKiiledText = transform.Find("EnemiesKiiledText").GetComponent<Text>();
@@ -27,6 +29,7 @@ public class StageResultUI : BaseUI<StageResultUI>
 
     protected override void OnShow()
     {
+        Init();
         enemiesKiiledText.text = StageManager.Instance.enemiesKilledCount.ToString();
         damageTakenText.text = StageManager.Instance.damageTakenPoint.ToString();
         gradeText.text = "A"; //임시로 A로 나오도록 

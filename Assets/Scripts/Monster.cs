@@ -42,7 +42,6 @@ public class Monster : MonoBehaviour
         player = Player.instance;
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        yield return null;
 
         isLive = true;
         CurrentFSM = IdleCo;
