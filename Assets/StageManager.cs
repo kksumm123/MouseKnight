@@ -28,8 +28,8 @@ public class StageManager : BaseUI<StageManager>
         gameState = GameStateType.Ready;
 
         List<SpawnPoint> allSpawnPoints = 
-            new List<SpawnPoint>(FindObjectsOfType<SpawnPoint>());
-        enemiesKilledCount = allSpawnPoints.Where(x => x.spawnType != SpawnType.Player).Count();
+            new List<SpawnPoint>(FindObjectsOfType<SpawnPoint>(true));
+        sumMonsterCount = allSpawnPoints.Where(x => x.spawnType != SpawnType.Player).Count();
     }
 
     public Ease inEaseType = Ease.InElastic;
