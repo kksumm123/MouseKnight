@@ -13,25 +13,29 @@ public class StageResultUI : BaseUI<StageResultUI>
     Text damageTakenText;
     Button continueButton;
 
-    void Init()
+    private void LoadNextStage()
+    {
+        Debug.LogWarning("LoadNextStage");
+
+        base.Close();
+        gameObject.SetActive(false);
+    }
+
+    protected override void OnShow()
     {
         gradeText = transform.Find("GradeText").GetComponent<Text>();
         enemiesKiiledText = transform.Find("EnemiesKiiledText").GetComponent<Text>();
         damageTakenText = transform.Find("DamageTakenText").GetComponent<Text>();
         continueButton = transform.Find("ContinueButton").GetComponent<Button>();
-        continueButton.onClick.AddListener(LoadNextStage);
+        continueButton.AddListener(this, LoadNextStage);
     }
 
-    private void LoadNextStage()
+    public void ShowUI(int enemiesKilledCount, int sumMonsterCount, int damageTakenPoint)
     {
-        Debug.LogWarning("LoadNextStage");
-    }
+        base.Show();
 
-    protected override void OnShow()
-    {
-        Init();
-        enemiesKiiledText.text = StageManager.Instance.enemiesKilledCount.ToString();
-        damageTakenText.text = StageManager.Instance.damageTakenPoint.ToString();
+        enemiesKiiledText.text = $"{enemiesKilledCount} / {sumMonsterCount}";
+        damageTakenText.text = damageTakenPoint.ToString();
         gradeText.text = "A"; //임시로 A로 나오도록 
     }
 }

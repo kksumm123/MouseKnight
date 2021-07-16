@@ -155,7 +155,7 @@ public class Monster : MonoBehaviour
         {
             // 다음 스테이지 로드
             // 결과창 UI Show
-            StageResultUI.Instance.Show();
+            StageResultUI.Instance.ShowUI(StageManager.Instance.enemiesKilledCount, StageManager.Instance.sumMonsterCount, StageManager.Instance.damageTakenPoint);
         }
         yield return new WaitForSeconds(deathTime);
         spriteRenderer.DOFade(0, 1).OnComplete(() =>
