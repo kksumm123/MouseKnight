@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PersistCanvas : SingletonMonoBehavior<PersistCanvas>
 {
+    public override string HierarchyPath => "PersistCanvas";
     public CanvasGroup blackScreen;
     new void Awake()
     {
