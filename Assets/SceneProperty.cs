@@ -9,7 +9,7 @@ public class SceneProperty : MonoBehaviour
     {
         instance = this;
 
-        if(GameData.instance == null)
+        if(GameData.Instance == null)
             Instantiate(Resources.Load("GameData"));
     }
     public int StageID = -1;

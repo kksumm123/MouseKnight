@@ -10,15 +10,13 @@ public class StageInfo
     public int rewardXP;
 
 }
-public class GameData : MonoBehaviour
+public class GameData : SingletonMonoBehavior<GameData>
 {
-    public static GameData instance;
     [SerializeField] List<StageInfo> stageInfos;
     public static Dictionary<int, StageInfo> stageInfoMap = new Dictionary<int, StageInfo>();
-    private void Awake()
+    new void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
 
         stageInfoMap = stageInfos.ToDictionary(x => x.stageID);
     }
