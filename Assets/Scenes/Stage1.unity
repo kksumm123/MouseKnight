@@ -1505,6 +1505,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3904144552374675492, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904144552374675492, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904144553370033861, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904144553370033861, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3904144553694760200, guid: 5337d08efe41d3f4880d70988ad291c9, type: 3}
       propertyPath: m_Name
       value: StageCanvas

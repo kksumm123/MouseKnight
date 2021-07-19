@@ -14,6 +14,6 @@ public class PlayerStatusUI : SingletonMonoBehavior<PlayerStatusUI>
 
     internal void UpdateHP(int hp, int maxHp)
     {
-        hpGuage.fillAmount = hp / maxHp;
+        hpGuage.fillAmount = (float)hp / maxHp;
     }
 }
