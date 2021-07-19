@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     {
         instance = this;
     }
-    [SerializeField] int hp = 100;
+    [SerializeField] int hp;
+    [SerializeField] int maxHp = 100;
     [SerializeField] int power = 20;
     [SerializeField] float speed = 60;
     float originSpeed;
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
         enemyLayer = 1 << LayerMask.NameToLayer("Monster");
         attackCollider = GetComponentInChildren<SphereCollider>(true);
         state = StateType.NONE;
+        maxHp = hp;
     }
     void Update()
     {
@@ -295,8 +297,8 @@ public class Player : MonoBehaviour
 
         StageManager.Instance.damageTakenPoint += damage;
         hp -= damage;
+        PlayerStatusUI.Instance.UpdateHP(hp, maxHp);
         // 피격 모션
-
         StartCoroutine(TakeHitCo());
     }
 
